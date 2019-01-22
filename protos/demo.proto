@@ -1,0 +1,44 @@
+//
+// Demo protocol buffer file
+// Capco Lunch & Learns
+// Dallas, 23 of January, 2019
+//
+// For more information, see https://grpc.io
+//
+
+// Choose a version
+syntax = "proto3";
+
+// Other settings
+// https://developers.google.com/protocol-buffers/docs/proto3#options
+option objc_class_prefix = "DEMO";
+
+// Name the package
+package lunchDemo;
+
+// Service definition
+service Lunch {
+    // Sends a greeting
+    rpc Greet (GreetRequest) returns (Greeting) {}
+    // Picks a restaurant
+    rpc PickRestaurant (Nothing) returns (Restaurant) {}
+}
+
+// Define message types and order of arguments
+message GreetRequest {
+    string name = 1;
+}
+
+message Greeting {
+    string message = 1;
+}
+
+message Restaurant {
+    string name = 1;
+    string address = 2;
+    double latitude = 3;
+    double longitude = 4;
+}
+
+message Nothing {
+}
