@@ -22,6 +22,8 @@ service Lunch {
     rpc Greet (GreetRequest) returns (Greeting) {}
     // Picks a restaurant
     rpc PickRestaurant (Nothing) returns (Restaurant) {}
+		// Get nutritional info
+		rpc GetNutrition (Restaurant) returns (NutritionInfo) {}
 }
 
 // Define message types and order of arguments
@@ -41,4 +43,12 @@ message Restaurant {
 }
 
 message Nothing {
+}
+
+message NutritionInfo {
+		int64 calories = 1;
+		int64 gramsCarb = 2;
+		int64 gramsFat = 3;
+		int64 gramsProtein = 4;
+		bool isHealthy = 5;
 }

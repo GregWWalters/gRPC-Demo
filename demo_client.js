@@ -39,6 +39,8 @@ function main() {
         user = 'stranger';
     }
 
+		let restaurant;
+
     client.greet({name: user}, function (err, response) {
         console.log(response.message);
     });
@@ -49,8 +51,16 @@ function main() {
         } else {
             console.log('You\'re going to '+restaurant.name+'!');
             console.log('Head to '+restaurant.latitude+', '+restaurant.longitude+'.');
-        }
-    });
+						client.getNutrition(restaurant, function (err, response) {
+								if (err) {
+									console.log('Whoops: '+err.message);
+								} else {
+									console.log(response);
+								}
+						});
+					}
+			});
+
 
 }
 

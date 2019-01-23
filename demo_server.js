@@ -44,6 +44,20 @@ function pickRestaurant(call, callback) {
     callback(null, restaurant);
 }
 
+const ofCourseNot = false;
+
+function getNutrition(call, callback) {
+	console.log('Restaurant: '+call.request.name);
+	let nutritionInfo = {
+		calories: 4000,
+		gramsCarb: 50,
+		gramsFat: 10,
+		gramsProtein: 7,
+		isHealthy: ofCourseNot
+	};
+	callback(null, nutritionInfo);
+}
+
 
 // Start the RPC server
 function main() {
@@ -54,7 +68,8 @@ function main() {
         demo_proto.Lunch.service,
         {
             greet: greet,
-            pickRestaurant: pickRestaurant
+            pickRestaurant: pickRestaurant,
+						getNutrition: getNutrition
         }
     );
 
